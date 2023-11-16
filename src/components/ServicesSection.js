@@ -1,38 +1,64 @@
 import React from 'react';
 
 const ServicesSection = () => {
+  const packages = [
+    {
+      title: 'Standard Package',
+      benefits: [
+        'Personalized Consultation',
+        'Assistance with Application Process',
+        'Visa Guidance',
+        'Pre-departure Orientation',
+      ],
+    },
+    {
+      title: 'Premium Package',
+      benefits: [
+        'All Standard Package Features',
+        'Accommodation Assistance',
+        'Language Proficiency Support',
+        'Cultural Integration Sessions',
+      ],
+      isPremium: true, // Flag to identify the Premium Package
+    },
+    {
+      title: 'Platinum Package',
+      benefits: [
+        'All Premium Package Features',
+        'Airport Pickup and Transfer',
+        'Exclusive Networking Events',
+        'Career Counseling',
+      ],
+    },
+  ];
+
   return (
-    <section className="services bg-white py-16">
+    <section className="services bg-gray-100 py-16">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-bold mb-8">Our Services</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Service Card 1 */}
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-4">Essential Admission</h3>
-            <p className="text-gray-700 mb-4">
-              Assistance with university and program selection, application guidance, and support with documentation.
-            </p>
-            <button className="text-blue-500 hover:underline">Learn More</button>
-          </div>
-
-          {/* Service Card 2 */}
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-4">Comprehensive Admission</h3>
-            <p className="text-gray-700 mb-4">
-              In-depth counseling sessions, assistance with crafting a compelling personal statement, and visa application support.
-            </p>
-            <button className="text-blue-500 hover:underline">Learn More</button>
-          </div>
-
-          {/* Service Card 3 */}
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-4">Premium Education Experience</h3>
-            <p className="text-gray-700 mb-4">
-              All-inclusive package with interview preparation, language proficiency assessment, and additional post-graduation services.
-            </p>
-            <button className="text-blue-500 hover:underline">Learn More</button>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {packages.map((packageItem, index) => (
+            <div
+              key={index}
+              className={`bg-white rounded-md shadow-md p-6 ${
+                packageItem.isPremium ? 'border-2 border-yellow-500' : ''
+              }`}
+            >
+              <h3 className="text-xl font-bold mb-4">{packageItem.title}</h3>
+              <ul className="list-none text-gray-700">
+                {packageItem.benefits.map((benefit, index) => (
+                  <li key={index} className="mb-2 flex items-center">
+                    <span className="mr-2 text-green-500">&#10004;</span>
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+              <button className="mt-6 bg-blue-500 text-white px-4 py-2 rounded-full font-bold hover:bg-blue-600 focus:outline-none">
+                Learn More
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </section>
