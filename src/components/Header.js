@@ -28,7 +28,6 @@ const Header = () => {
   return (
     <header className={`bg-blue-500 p-4 ${isSticky ? 'fixed top-0 left-0 right-0' : ''}`}>
       <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
         <div className="text-white text-lg font-bold cursor-pointer" onClick={scrollToTop}>
           <span className="text-yellow-300">ET</span>du
         </div>
